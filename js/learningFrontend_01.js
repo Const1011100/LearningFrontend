@@ -42,9 +42,12 @@ reverseWords("One two three")     // -> "three two One"
 */
 // Мій варіант
 function reverseWords(str) {
-  // Your code here
+  return str.split(' ').reverse().join(' ');
 }
-// Ідеальний варіант від ChatGPT
+// Ідеальний варіант від DeepSeek
+function reverseWords(str) {
+  return str.split(' ').reverse().join(' ');
+}
 // ================================================================================================
 // ================================================================================================
 //*-Week №1 User Class with Counter (ChatGPT) (Wednesday)
