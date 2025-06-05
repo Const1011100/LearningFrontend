@@ -78,7 +78,7 @@ class User {
 */
 // Мій варіант
 function delayedSum(a, b, callback) {
-  // your code
+  setTimeout(() => callback(a + b), 500);
 }
 
 // Ідеальний варіант від ChatGPT
