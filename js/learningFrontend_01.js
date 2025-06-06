@@ -90,10 +90,20 @@ function delayedSum(a, b, callback) {
 */
 // Мій варіант
 function asyncSquare(n) {
-  // your code
+  return new Promise(function (resolve, reject) {
+    return setTimeout(() => {
+      resolve(n * n);
+    }, 300);
+  });
 }
 
 // Ідеальний варіант від ChatGPT
+function asyncSquare(n) {
+  return new Promise((resolve) => {
+    setTimeout(() => resolve(n * n), 300);
+  });
+}
+
 // ================================================================================================
 // ================================================================================================
 //*-Week №1 Button Click Counter (ChatGPT) (Saturday)
