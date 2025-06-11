@@ -76,8 +76,50 @@ const c = Counter.merge(a, b);
 c.value;              // 5
 */
 // Мій варіант
+class Counter {
+  #value;
+  constructor(start = 0) {
+    this.#value = start;
+  }
+  inc(step = 1) {
+    this.#value += step;
+    return this.#value;
+  }
+  dec(step = 1) {
+    this.#value -= step;
+    return this.#value;
+  }
+  get value() {
+    return this.#value;
+  }
+  static merge(...counters) {
+    const sum = counters.reduce((total, counter) => {
+      return total + counter.value;
+    }, 0);
+    return new Counter(sum);
+  }
+}
 
 // Ідеальний варіант від ChatGPT
+/*
+Перевірка типів / валідація параметрів:
+Якщо хочеш зробити клас більш захищеним від неправильного використання:
+inc(step = 1) {
+  if (typeof step !== 'number') throw new TypeError('Step must be a number');
+  this.#value += step;
+  return this.#value;
+}
+
+Захист у merge:
+Якщо хочеш перевіряти, що всі аргументи — це екземпляри Counter:
+static merge(...counters) {
+  if (!counters.every(c => c instanceof Counter))
+    throw new TypeError('All arguments must be instances of Counter');
+  const sum = counters.reduce((total, counter) => total + counter.value, 0);
+  return new Counter(sum);
+}
+*/
+
 // ================================================================================================
 // ================================================================================================
 //*-Week №2 promisify (ChatGPT) (Thursday)
