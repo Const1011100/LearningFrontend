@@ -207,23 +207,25 @@ function orderPizza_(pizzaName) {
 }
 // ================================================================================================
 // ================================================================================================
-//*-Week №2 delegate (ChatGPT) (Saturday)
+//*-Week №2 setupInputListener (ChatGPT) (Saturday)
 /*
-Реалізуйте функцію delegate, що спрощує делегування подій.
-@param {Element} parent  - батьківський елемент, на який вішаємо слухача
-@param {string}  type    - тип події, напр. 'click'
-@param {string}  selector- CSS-селектор для цільового елемента
-@param {Function} handler- колбек, який викликається з `event` та `target`
-@returns {Function}      - функція, що знімає слухача
+Реалізуй функцію setupInputListener, яка реагує на введення тексту в <input> і одразу показує його
+в елементі з id="output".
 
-Алгоритм такий: коли подія стається на parent або його нащадках,
-перевірити, чи event.target відповідає selector (або має предка, що відповідає),
-і викликати handler(event, matchedTarget).
+<input id="inputText" />
+<div id="output"></div>
 
-Функція має працювати в браузері та під jsdom (який використовується в Codewars).
+При кожній зміні в полі вводу, output має оновлюватись поточним значенням input'а.
 */
 // Мій варіант
-
+function setupInputListener() {
+  const input = document.getElementById('inputText');
+  const output = document.getElementById('output');
+  input.addEventListener('input', () => {
+    output.textContent = input.value;
+  });
+}
+setupInputListener();
 // Ідеальний варіант від ChatGPT
 // ================================================================================================
 // ================================================================================================
