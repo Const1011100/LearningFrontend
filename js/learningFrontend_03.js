@@ -37,14 +37,17 @@ function reverseWords(str) {
 що повертає рядок: "Hello, my name is <name>".
 const p = new Person("Oleg");
 p.greet() ➞ "Hello, my name is Oleg"
-
 */
 // Мій варіант
-
+class Person {
+  constructor(name) {
+    this.name = name;
+  }
+  greet() {
+    return `Hello, my name is ${this.name}`;
+  }
+}
 // Ідеальний варіант від ChatGPT
-/*
- */
-
 // ================================================================================================
 // ================================================================================================
 //*-Week №3 delayedHello (ChatGPT) (Thursday)
