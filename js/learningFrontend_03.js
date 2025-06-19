@@ -57,7 +57,18 @@ class Person {
 await delayedHello("Sasha") ➞ "Hello, Sasha"
 */
 // Мій варіант
+function delayedHello(name) {
+  return new Promise((resolve, reject) => {
+    if (!name) {
+      reject('Name is not found');
+      return; // важливо — щоб не виконувалось далі
+    }
 
+    setTimeout(() => {
+      resolve(`Hello, ${name}`);
+    }, 1000);
+  });
+}
 // Ідеальний варіант від ChatGPT
 // ================================================================================================
 // ================================================================================================
