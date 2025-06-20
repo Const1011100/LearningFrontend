@@ -78,9 +78,18 @@ function delayedHello(name) {
 await doubleAfterDelay(4) ➞ 8
 */
 // Мій варіант
-
+function doubleAfterDelay(n) {
+  return new Promise((resolve, reject) => {
+    if (typeof n !== 'number') {
+      reject(new Error('Number is not found'));
+      return;
+    }
+    setTimeout(() => {
+      resolve(n * 2);
+    }, 500);
+  });
+}
 // Ідеальний варіант від ChatGPT
-
 // ================================================================================================
 // ================================================================================================
 //*-Week №3 inputMirror (ChatGPT) (Saturday)
