@@ -92,15 +92,24 @@ function doubleAfterDelay(n) {
 // Ідеальний варіант від ChatGPT
 // ================================================================================================
 // ================================================================================================
-//*-Week №3 inputMirror (ChatGPT) (Saturday)
+//*-Week №3 liveCharacterCount (ChatGPT) (Saturday)
 /*
-Напиши функцію setupMirrorInput(), яка слухає подію input на <input id="inputText"> і відображає
-введене значення в <div id="output">.
-<input id="inputText" />
-<div id="output"></div>
+Створи функцію setupLiveCharacterCount(), яка:
+Слухає подію input на <textarea id="text">
+Виводить кількість введених символів у <span id="charCount">
+<textarea id="text" placeholder="Type something..."></textarea>
+<div>Characters: <span id="charCount">0</span></div>
 */
 // Мій варіант
 
+function setupLiveCharacterCount() {
+  const textarea = document.getElementById('text');
+  const span = document.getElementById('charCount');
+  textarea.addEventListener('input', () => {
+    span.textContent = textarea.value.length;
+  });
+}
+setupLiveCharacterCount();
 // Ідеальний варіант від ChatGPT
 // ================================================================================================
 // ================================================================================================
