@@ -56,8 +56,18 @@ maskify("123456789") ➞ "#####6789"
 maskify("abc") ➞ "abc"
  */
 // Мій варіант з допомогою ChatGPT
+function maskify(str) {
+  if (str.length < 4) {
+    return str;
+  }
+  const stars = str.slice(0, str.length - 4).replace(/./g, '#');
+  const end = str.slice(str.length - 4);
+  return stars + end;
+}
+// Ідеальний варіант від ChatGPT
+const maskify_ = (s) =>
+  s.length <= 4 ? s : s.slice(0, -4).replace(/./g, '#') + s.slice(-4);
 
-// Ідеальний варіант від DeepSeek
 // ================================================================================================
 // ================================================================================================
 //*-Week №4 Rectangle (ChatGPT) (Wednesday)
