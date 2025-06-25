@@ -84,8 +84,35 @@ r.getArea() ➞ 20
 r.getPerimeter() ➞ 18
  */
 // Мій варіант
+class Rectangle {
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
+  }
+  getArea() {
+    return this.width * this.height;
+  }
+  getPerimeter() {
+    return (this.width + this.height) * 2;
+  }
+}
 
 // Ідеальний варіант від ChatGPT
+class Rectangle_ {
+  constructor(width, height) {
+    this.width = width;
+    this.height = height;
+  }
+
+  get area() {
+    return this.width * this.height;
+  }
+
+  get perimeter() {
+    return 2 * (this.width + this.height);
+  }
+}
+
 // ================================================================================================
 // ================================================================================================
 //*-Week №4 runWithCallback (ChatGPT) (Thursday)
