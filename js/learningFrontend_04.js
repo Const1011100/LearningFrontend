@@ -125,8 +125,20 @@ runWithCallback("Hello", console.log);
 // Через 500мс виведе "Hello"
  */
 // Мій варіант
-
+function runWithCallback(value, callback) {
+  return setTimeout(() => {
+    callback(value);
+  }, 500);
+}
 // Ідеальний варіант від ChatGPT
+function runWithCallback_(value, callback) {
+  if (typeof callback !== 'function') {
+    throw new TypeError('Callback must be a function');
+  }
+
+  return setTimeout(() => callback(value), 500);
+}
+
 // ================================================================================================
 // ================================================================================================
 //*-Week №4 fetchUserName (ChatGPT) (Friday)
