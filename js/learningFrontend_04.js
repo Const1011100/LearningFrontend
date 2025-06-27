@@ -150,8 +150,30 @@ https://jsonplaceholder.typicode.com/users, знаходить користув�
 await fetchUserName(3) ➞ "Clementine Bauch"
  */
 // Мій варіант
+function fetchUserName(id) {
+  return fetch('https://jsonplaceholder.typicode.com/users')
+    .then((res) => res.json())
+    .then((users) => {
+      const user = users.find((u) => u.id === id);
+      if (!user) {
+        throw new Error('User not found!');
+      }
+      return user.name;
+    });
+}
+// Ідеальний варіант на рівні сеньйора від ChatGPT
+async function fetchUserName_(id) {
+  const res = await fetch('https://jsonplaceholder.typicode.com/users');
+  const users = await res.json();
+  const user = users.find((u) => u.id === id);
 
-// Ідеальний варіант від ChatGPT
+  if (!user) {
+    throw new Error('User not found!');
+  }
+
+  return user.name;
+}
+
 // ================================================================================================
 // ================================================================================================
 //*-Week №4 changeTheme (ChatGPT) (Saturday)
