@@ -190,7 +190,13 @@ HTML:
 Клік знову → <body> (без класу)
  */
 // Мій варіант
-
+function setupThemeToggle() {
+  const btn = document.getElementById('toggleTheme');
+  const body = document.body;
+  btn.addEventListener('click', () => {
+    body.classList.toggle('dark');
+  });
+}
 // Ідеальний варіант від ChatGPT
 // ================================================================================================
 // ================================================================================================
