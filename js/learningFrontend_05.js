@@ -18,13 +18,23 @@ function chunkArray(arr, size) {
 }
 // ================================================================================================
 // ================================================================================================
-//*-Week №5 (ChatGPT) (Tuesday)
+//*-Week №5 camelToKebab (ChatGPT) (Tuesday)
 /*
-
+Створи функцію camelToKebab(str), яка перетворює camelCase рядок на kebab-case.
+Приклад:
+camelToKebab("backgroundColor") ➞ "background-color"
+camelToKebab("fontSize") ➞ "font-size"
  */
 // Мій варіант з допомогою ChatGPT
-
-// Ідеальний варіант від ChatGPT
+function camelToKebab(str) {
+  const regex = /([A-Z])/g;
+  const result = str.replace(regex, '-$1').toLowerCase();
+  return result;
+}
+// Варіант від ChatGPT
+function camelToKebab_(str) {
+  return str.replace(/([A-Z])/g, (_, ch) => '-' + ch.toLowerCase());
+}
 
 // ================================================================================================
 // ================================================================================================
