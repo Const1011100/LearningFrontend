@@ -38,12 +38,31 @@ function camelToKebab_(str) {
 
 // ================================================================================================
 // ================================================================================================
-//*-Week №5 (ChatGPT) (Wednesday)
+//*-Week №5 Book (ChatGPT) (Wednesday)
 /*
-
+Створи клас Book, який приймає title і author в конструкторі.
+Клас повинен мати метод describe(), що повертає рядок:
+"The book 'title' is written by author."
+Приклад:
+const b = new Book("1984", "George Orwell");
+b.describe() ➞ "The book '1984' is written by George Orwell."
  */
 // Мій варіант
+class Book {
+  constructor(title, author) {
+    this.title = title;
+    this.author = author;
+  }
 
+  describe() {
+    return `The book '${this.title}' is written by ${this.author}.`;
+  }
+}
+/*
+Поради сеньйор-рівня (не обов’язково, просто як покращення):
+Зробити властивості readonly через гетери (якщо не мають змінюватися)
+Додати валідацію у конструкторі (наприклад, перевірку, що title — рядок)
+*/
 // Ідеальний варіант від ChatGPT
 
 // ================================================================================================
