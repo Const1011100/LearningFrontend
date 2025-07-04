@@ -90,12 +90,27 @@ return setTimeout(callback, ms);
 
 // ================================================================================================
 // ================================================================================================
-//*-Week №5 (ChatGPT) (Friday)
+//*-Week №5 fetchPostTitle (ChatGPT) (Friday)
 /*
-
+Створи асинхронну функцію fetchPostTitle(id), яка отримує пост з
+https://jsonplaceholder.typicode.com/posts/<id>
+та повертає його title.
  */
 // Мій варіант
-
+function fetchPostTitle(id) {
+  return fetch(`https://jsonplaceholder.typicode.com/posts/${id}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((post) => post.title)
+    .catch((error) => {
+      console.error('Error fetching post:', error);
+      throw error;
+    });
+}
 // Ідеальний варіант на рівні сеньйора від ChatGPT
 
 // ================================================================================================
