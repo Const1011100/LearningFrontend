@@ -115,11 +115,37 @@ function fetchPostTitle(id) {
 
 // ================================================================================================
 // ================================================================================================
-//*-Week №5 (ChatGPT) (Saturday)
+//*-Week №5 mirrorCheckbox (ChatGPT) (Saturday)
 /*
+Створи функцію setupCheckboxMirror(), яка:
+слухає <input type="checkbox" id="source">
+оновлює стан (checked) іншого <input type="checkbox" id="target"> — завжди такий самий
+<input type="checkbox" id="source" />
+<input type="checkbox" id="target" />
+Приклад:
+Якщо source клікають → target має мати такий самий .checked
  */
 // Мій варіант
+function setupCheckboxMirror() {
+  const checkboxSource = document.getElementById('source');
+  const checkboxTarget = document.getElementById('target');
+  // Додаємо слухача подій до source чекбоксу
+  checkboxSource.addEventListener('change', function () {
+    // Встановлюємо стан target чекбоксу таким самим, як у source
+    checkboxTarget.checked = this.checked;
+  });
+}
+setupCheckboxMirror();
 
-// Ідеальний варіант від ChatGPT
+// Поради від ChatGPT
+/*
+Перевірка наявності елементів:
+if (!checkboxSource || !checkboxTarget) return;
+
+Замість function () можна використовувати стрілкову функцію, якщо не потрібен this:
+checkboxSource.addEventListener('change', () => {
+  checkboxTarget.checked = checkboxSource.checked;
+});
+*/
 // ================================================================================================
 // ================================================================================================
