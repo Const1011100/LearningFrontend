@@ -48,15 +48,41 @@ function expandShorthandHex_(hex) {
 }
 // ================================================================================================
 // ================================================================================================
-//*-Week №6 (ChatGPT) (Wednesday)
+//*-Week №6 UserManager (ChatGPT) (Wednesday)
 /*
+Реалізуй клас UserManager, який дозволяє:
+додавати користувачів у список через addUser(user)
+перевіряти, чи є користувач за email: hasUser(email)
+отримувати кількість унікальних користувачів
+Email має бути унікальним (незалежно від регістру).
 
+Приклад:
+const um = new UserManager();
+um.addUser({ name: "Ivan", email: "ivan@example.com" });
+um.hasUser("IVAN@example.com") ➞ true
  */
 // Мій варіант
+class UserManager {
+  #users = [];
+  addUser(user) {
+    // Захист від дублювання при addUser
+    if (!this.hasEmail(user.email)) {
+      this.#users.push(user);
+    }
+  }
 
-/*
+  hasEmail(email) {
+    return this.#users.some(
+      (user) => user.email.toLowerCase() === email.toLowerCase()
+    );
+  }
 
-*/
+  // краще повертати копію інакше зовнішній код може змінити приватний масив
+  get users() {
+    return [...this.#users];
+  }
+}
+
 // Ідеальний варіант від ChatGPT
 
 // ================================================================================================
