@@ -120,12 +120,37 @@ async function retryPromise(fn, attempts) {
 
 // ================================================================================================
 // ================================================================================================
-//*-Week №6 (ChatGPT) (Friday)
+//*-Week №6 loadUserAndPosts (ChatGPT) (Friday)
 /*
+Реалізуй асинхронну функцію loadUserAndPosts(userId), яка:
+завантажує користувача з https://jsonplaceholder.typicode.com/users/<userId>
+завантажує всі пости цього користувача з /posts
+повертає об'єкт { name, posts: [titles...] }
 
+Приклад:
+await loadUserAndPosts(1) 
+// ➞ { name: "Leanne Graham", posts: ["...", "..."] }
  */
 // Мій варіант
-
+function loadUserAndPosts(userId) {
+  // Завантажуємо дані користувача
+  return fetch(`https://jsonplaceholder.typicode.com/users/${userId}`)
+    .then((userResponse) => userResponse.json())
+    .then((user) => {
+      // Завантажуємо пости користувача
+      return fetch(
+        `https://jsonplaceholder.typicode.com/posts?userId=${userId}`
+      )
+        .then((postsResponse) => postsResponse.json())
+        .then((posts) => {
+          // Повертаємо об'єкт з потрібною структурою
+          return {
+            name: user.name,
+            posts: posts.map((post) => post.title),
+          };
+        });
+    });
+}
 // Ідеальний варіант на рівні сеньйора від ChatGPT
 
 // ================================================================================================
