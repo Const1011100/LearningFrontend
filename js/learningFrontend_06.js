@@ -155,14 +155,32 @@ function loadUserAndPosts(userId) {
 
 // ================================================================================================
 // ================================================================================================
-//*-Week №6 (ChatGPT) (Saturday)
+//*-Week №6 setupFormValidator (ChatGPT) (Saturday)
 /*
+Реалізуй функцію setupFormValidator(), яка:
+слухає подію input на полях з класом .required
+якщо поле пусте — додає клас error
+якщо поле має текст — прибирає клас error
+<input type="text" class="required" />
+<input type="email" class="required" />
 
+Приклад:
+Коли поле порожнє → додається клас error
+Коли щось введено → клас error зникає
  */
 // Мій варіант
-
-// Поради від ChatGPT
-/*
- */
+function setupFormValidator() {
+  const fields = document.querySelectorAll('.required');
+  for (let field of fields) {
+    field.addEventListener('input', () => {
+      if (field.value.trim() === '') {
+        field.classList.add('error');
+      } else {
+        field.classList.remove('error');
+      }
+    });
+  }
+}
+setupFormValidator();
 // ================================================================================================
 // ================================================================================================
