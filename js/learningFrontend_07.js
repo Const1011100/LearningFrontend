@@ -1,9 +1,33 @@
 // ================================================================================================
-//*-Week №7 (ChatGPT) (Monday)
+//*-Week №7 groupByLength (ChatGPT) (Monday)
 /*
+Реалізуй функцію groupByLength(words), яка групує слова за їх довжиною.
+Поверни об’єкт, де ключ — довжина слова, а значення — масив слів цієї довжини.
+groupByLength(["hi", "bye", "hello", "ok", "yes"])
+// ➞ { 2: ["hi", "ok"], 3: ["bye", "yes"], 5: ["hello"] }
  */
 // Мій варіант
+function groupByLength(words) {
+  const group = {};
+  for (let word of words) {
+    if (!group.hasOwnProperty(word.length)) {
+      group[word.length] = [word];
+    } else {
+      group[word.length].push(word);
+    }
+  }
+  return group;
+}
 
+// Альтернатива (більш "функціональний" стиль) від GPT
+function groupByLength_(words) {
+  return words.reduce((acc, word) => {
+    const len = word.length;
+    acc[len] = acc[len] || [];
+    acc[len].push(word);
+    return acc;
+  }, {});
+}
 // ================================================================================================
 // ================================================================================================
 //*-Week №7 (ChatGPT) (Tuesday)
