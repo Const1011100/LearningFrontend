@@ -30,10 +30,58 @@ function groupByLength_(words) {
 }
 // ================================================================================================
 // ================================================================================================
-//*-Week №7 (ChatGPT) (Tuesday)
+//*-Week №7 isBalanced (ChatGPT) (Tuesday)
 /*
+Напиши функцію isBalanced(str), яка перевіряє, чи всі типи дужок (), {}, [] відкриті й закриті
+коректно та збалансовано.
+isBalanced("{[()]}") ➞ true  
+isBalanced("{[(])}") ➞ false  
+isBalanced("((()))") ➞ true
  */
 // Мій варіант ChatGPT
+// Погане рішення і не працює з вкладеними прикладами "({[]}){}"
+function isBalanced(str) {
+  for (let i = 0; i < str.length / 2; i++) {
+    if (str[i] === '(') {
+      if (str[str.length - 1 - i] !== ')') {
+        return false;
+      }
+    }
+    if (str[i] === '[') {
+      if (str[str.length - 1 - i] !== ']') {
+        return false;
+      }
+    }
+    if (str[i] === '{') {
+      if (str[str.length - 1 - i] !== '}') {
+        return false;
+      }
+    }
+  }
+  return true;
+}
+
+// Рішення від GPT
+function isBalanced_(str) {
+  const stack = [];
+  const pairs = {
+    ')': '(',
+    ']': '[',
+    '}': '{',
+  };
+
+  for (let char of str) {
+    if (['(', '[', '{'].includes(char)) {
+      stack.push(char);
+    } else if ([')', ']', '}'].includes(char)) {
+      if (stack.pop() !== pairs[char]) {
+        return false;
+      }
+    }
+  }
+
+  return stack.length === 0;
+}
 
 // ================================================================================================
 // ================================================================================================
