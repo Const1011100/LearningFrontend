@@ -185,15 +185,40 @@ class ProductCatalog {
 
 // ================================================================================================
 // ================================================================================================
-//*-Week №7 (ChatGPT) (Thursday)
+//*-Week №7 batchMap (ChatGPT) (Thursday)
 /*
+Створи функцію batchMap(arr, fn), яка:
+приймає масив arr і функцію fn
+застосовує fn до кожного елемента паралельно
+повертає новий масив з результатами (як map, але з колбеком, що може бути асинхронним)
+Приклад:
+batchMap([1, 2, 3], x => x * 2); // ➞ [2, 4, 6]
  */
 // Мій варіант
+function batchMap(arr, fn) {
+  return arr.map((elem) => fn(elem));
+}
+
+// Варіант від GPT з перевіркою типів аргументів (захист від помилок):
+function batchMap_(arr, fn) {
+  if (!Array.isArray(arr))
+    throw new TypeError('First argument must be an array');
+  if (typeof fn !== 'function')
+    throw new TypeError('Second argument must be a function');
+  return arr.map(fn);
+}
 
 // ================================================================================================
 // ================================================================================================
-//*-Week №7 (ChatGPT) (Friday)
+//*-Week №7 loadUsersWithPosts (ChatGPT) (Friday)
 /*
+Створи функцію loadUsersWithPosts(limit), яка:
+завантажує перші limit користувачів із https://jsonplaceholder.typicode.com/users
+для кожного користувача завантажує його пости
+повертає масив об'єктів: { name, postCount }
+Приклад:
+await loadUsersWithPosts(2);
+// [ { name: 'Leanne Graham', postCount: 10 }, { name: 'Ervin Howell', postCount: 10 } ]
  */
 // Мій варіант
 
