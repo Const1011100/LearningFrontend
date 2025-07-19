@@ -112,7 +112,7 @@ class ProductCatalog {
 }
 
 //
-class ProductCatalog {
+class ProductCatalog_ {
   #catalog = [];
 
   /**
@@ -221,7 +221,19 @@ await loadUsersWithPosts(2);
 // [ { name: 'Leanne Graham', postCount: 10 }, { name: 'Ervin Howell', postCount: 10 } ]
  */
 // Мій варіант
-
+function loadUserWithPosts(limit) {
+  const url = 'https://jsonplaceholder.typicode.com/users';
+  return fetch(url)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`HTTP error: ${response.status}`);
+      }
+      return response.json();
+    })
+    .then((users) => {
+      return users.slice(0, limit);
+    });
+}
 // ================================================================================================
 // ================================================================================================
 //*-Week №7 (ChatGPT) (Saturday)
