@@ -236,10 +236,33 @@ function loadUserWithPosts(limit) {
 }
 // ================================================================================================
 // ================================================================================================
-//*-Week №7 (ChatGPT) (Saturday)
+//*-Week №7 setupAutoSave (ChatGPT) (Saturday)
 /*
+Реалізуй функцію setupAutoSave(), яка:
+слухає подію input на текстовому полі з id="note"
+зберігає значення у localStorage під ключем "autosave"
+під час завантаження сторінки автоматично підставляє збережене значення у поле,
+якщо воно існує
+<textarea id="note"></textarea>
  */
 // Мій варіант
+function setupAutoSave() {
+  const noteField = document.getElementById('note');
 
+  // 1. Перевіряємо, чи існує поле (на випадок, якщо його немає на сторінці)
+  if (!noteField) return;
+
+  // 2. При завантаженні сторінки перевіряємо наявність збереженого значення
+  const savedValue = localStorage.getItem('autosave');
+  if (savedValue !== null) {
+    noteField.value = savedValue;
+  }
+
+  // 3. Слухаємо подію input на текстовому полі
+  noteField.addEventListener('input', function () {
+    // 4. Зберігаємо значення у localStorage під ключем "autosave"
+    localStorage.setItem('autosave', this.value);
+  });
+}
 // ================================================================================================
 // ================================================================================================
