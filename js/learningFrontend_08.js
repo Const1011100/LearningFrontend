@@ -15,11 +15,35 @@ function filterByAdjacentSum(arr, threshold) {
 
 // ================================================================================================
 // ================================================================================================
-//*-Week №8 (ChatGPT) (Tuesday)
+//*-Week №8 compressConsecutive (ChatGPT) (Tuesday)
 /*
+Створи функцію compressConsecutive(str), яка замінює послідовні однакові символи в рядку на
+символ+кількість.
+Рядок складається лише з букв (великі й малі). Якщо літера зустрічається лише один раз — кількість
+не вказується.
+compressConsecutive("aaabbCdee") ➞ "a3b2C1d1e2"
  */
 // Мій варіант ChatGPT
+function compressConsecutive(str) {
+  if (!str) return '';
 
+  let result = '';
+  let target = str[0];
+  let counter = 1;
+
+  for (let i = 1; i < str.length; i++) {
+    if (str[i] === target) {
+      counter++;
+    } else {
+      result += target + counter;
+      target = str[i];
+      counter = 1;
+    }
+  }
+  // Додаємо останній символ
+  result += target + counter;
+  return result;
+}
 // ================================================================================================
 // ================================================================================================
 //*-Week №8 (ChatGPT) (Wednesday)
