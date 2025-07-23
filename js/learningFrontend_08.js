@@ -46,10 +46,34 @@ function compressConsecutive(str) {
 }
 // ================================================================================================
 // ================================================================================================
-//*-Week №8 (ChatGPT) (Wednesday)
+//*-Week №8 BookShelf (ChatGPT) (Wednesday)
 /*
+Реалізуй клас BookShelf, який зберігає книги (рядки).
+Метод addBook(title) додає книгу.
+Метод removeBook(title) видаляє першу знайдену книгу.
+Метод listBooks() повертає всі книги в алфавітному порядку.
+Гетер count повертає кількість книг.
  */
 // Мій варіант
+class BookShelf {
+  #books = [];
+  addBook(title) {
+    this.#books.push(title);
+  }
+  removeBook(title) {
+    const index = this.#books.indexOf(title);
+    if (index !== -1) {
+      this.#books.splice(index, 1);
+    }
+  }
+  listBooks() {
+    // Сортування книг за алфавітом рядків
+    return [...this.#books].sort((a, b) => a.localeCompare(b));
+  }
+  get count() {
+    return this.#books.length;
+  }
+}
 
 // ================================================================================================
 // ================================================================================================
