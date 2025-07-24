@@ -77,12 +77,29 @@ class BookShelf {
 
 // ================================================================================================
 // ================================================================================================
-//*-Week №8 (ChatGPT) (Thursday)
+//*-Week №8 customMapWithCallback (ChatGPT) (Thursday)
 /*
-
+Створи функцію customMap(arr, callback), яка працює як Array.prototype.map, але не використовує
+.map всередині.
+Callback отримує два аргументи: значення та індекс.
+customMap([1, 2, 3], (val, i) => val + i) ➞ [1, 3, 5]
  */
 // Мій варіант
+function customMap(arr, callback) {
+  if (Array.isArray(arr) || typeof callback !== 'function') return [];
 
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    result.push(callback(arr[i], i));
+  }
+  return result;
+}
+
+// Альтернатива від ChatGPT (за бажанням — ES6 стиль):
+const customMap_ = (arr, callback) =>
+  Array.isArray(arr) && typeof callback === 'function'
+    ? arr.reduce((acc, val, i) => [...acc, callback(val, i)], [])
+    : [];
 // ================================================================================================
 // ================================================================================================
 //*-Week №8 (ChatGPT) (Friday)
