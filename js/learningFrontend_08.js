@@ -102,11 +102,46 @@ const customMap_ = (arr, callback) =>
     : [];
 // ================================================================================================
 // ================================================================================================
-//*-Week №8 (ChatGPT) (Friday)
+//*-Week №8 delayedSeriesSum (ChatGPT) (Friday)
 /*
+Напиши функцію delayedSeriesSum(arr), яка повертає проміс.
+Функція повинна поступово, з затримкою 100 мс між кожним елементом, додавати числа з масиву.
+Після завершення повертає суму.
+(Можна використати setTimeout або await new Promise з setTimeout)
+await delayedSeriesSum([1, 2, 3]) ➞ 6  // після 300 мс
  */
 // Мій варіант
+function delayedSeriesSum(arr) {
+  return new Promise((resolve) => {
+    let sum = 0;
+    let index = 0;
 
+    function addNext() {
+      if (index < arr.length) {
+        sum += arr[index];
+        index++;
+        setTimeout(addNext, 100);
+      } else {
+        resolve(sum);
+      }
+    }
+
+    addNext();
+  });
+}
+// Альтернативна реалізація з async/await від GPT (як варіант для порівняння):
+function sleep(ms) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+async function delayedSeriesSum_(arr) {
+  let sum = 0;
+  for (const num of arr) {
+    await sleep(100);
+    sum += num;
+  }
+  return sum;
+}
 // ================================================================================================
 // ================================================================================================
 //*-Week №8 (ChatGPT) (Saturday)
