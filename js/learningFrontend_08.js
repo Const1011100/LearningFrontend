@@ -144,11 +144,28 @@ async function delayedSeriesSum_(arr) {
 }
 // ================================================================================================
 // ================================================================================================
-//*-Week №8 (ChatGPT) (Saturday)
+//*-Week №8 setupCounterButtons (ChatGPT) (Saturday)
 /*
-
+На сторінці є кнопки з класом "counter-btn" і в них значення лічильника (0, 1, і т.д.).
+Напиши функцію setupCounterButtons(), яка:
+Збільшує число в кнопці при кожному кліку.
+Якщо число досягає 10 — кнопка дизейблиться.
+Підказка: працювати з textContent, disabled, подією 'click'.
  */
 // Мій варіант
+function setupCounterButtons() {
+  const buttons = document.querySelectorAll('.counter-btn');
 
+  buttons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      let count = Number(btn.textContent) + 1;
+      btn.textContent = count;
+
+      if (count >= 10) {
+        btn.disabled = true;
+      }
+    });
+  });
+}
 // ================================================================================================
 // ================================================================================================
