@@ -50,12 +50,47 @@ function reverseWordsWithLength(str) {
 
 // ================================================================================================
 // ================================================================================================
-//*-Week №9 (ChatGPT) (Wednesday)
+//*-Week №9 Inventory (ChatGPT) (Wednesday)
 /*
-
+Реалізуй клас Inventory для управління товарами.
+Метод addItem(name, quantity) додає товар і його кількість. Якщо товар вже є — збільшує кількість.
+Метод removeItem(name, quantity) зменшує кількість. Якщо кількість стає 0 або менше — видаляє товар
+з інвентарю.
+Метод listItems() повертає список товарів у форматі масиву об’єктів { name, quantity }, відсортованих
+за назвою.
  */
 // Мій варіант
+class Inventory {
+  constructor() {
+    this.items = {}; // Використовуємо об'єкт замість Map
+  }
 
+  addItem(name, quantity) {
+    if (this.items[name] !== undefined) {
+      this.items[name] += quantity; // Якщо товар є, збільшуємо кількість
+    } else {
+      this.items[name] = quantity; // Якщо немає, додаємо новий товар
+    }
+  }
+
+  removeItem(name, quantity) {
+    if (this.items[name] === undefined) {
+      return; // Товару немає в інвентарі
+    }
+
+    this.items[name] -= quantity;
+
+    if (this.items[name] <= 0) {
+      delete this.items[name]; // Видаляємо товар, якщо кількість <= 0
+    }
+  }
+
+  listItems() {
+    return Object.entries(this.items)
+      .map(([name, quantity]) => ({ name, quantity }))
+      .sort((a, b) => a.name.localeCompare(b.name));
+  }
+}
 // ================================================================================================
 // ================================================================================================
 //*-Week №9 (ChatGPT) (Thursday)
