@@ -93,12 +93,23 @@ class Inventory {
 }
 // ================================================================================================
 // ================================================================================================
-//*-Week №9 (ChatGPT) (Thursday)
+//*-Week №9 customFilter (ChatGPT) (Thursday)
 /*
-
+Створи функцію customFilter(arr, callback), яка працює як Array.prototype.filter,
+але не використовує .filter.
+Callback отримує три параметри: (value, index, array).
+customFilter([10, 15, 20, 25], num => num > 15) ➞ [20, 25]
  */
 // Мій варіант
-
+function customFilter(arr, callback) {
+  const result = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (callback(arr[i], i, arr)) {
+      result.push(arr[i]);
+    }
+  }
+  return result;
+}
 // ================================================================================================
 // ================================================================================================
 //*-Week №9 (ChatGPT) (Friday)
