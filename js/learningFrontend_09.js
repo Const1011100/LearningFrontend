@@ -112,14 +112,35 @@ function customFilter(arr, callback) {
 }
 // ================================================================================================
 // ================================================================================================
-//*-Week №9 (ChatGPT) (Friday)
+//*-Week №9 fetchUserData (ChatGPT) (Friday)
 /*
-
+Напиши функцію fetchUserData(id), яка за допомогою fetch отримує дані користувача з
+API https://jsonplaceholder.typicode.com/users/:id і повертає об’єкт з ім’ям користувача та його email.
+Якщо користувача не знайдено — відхиляй проміс з помилкою.
  */
 // Мій варіант
-
-// Альтернативна реалізація з async/await від GPT (як варіант для порівняння):
-
+function fetchUserData(id) {
+  return fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error(`User with id ${id} not found`);
+      }
+      return response.json();
+    })
+    .then((user) => {
+      return {
+        name: user.name,
+        email: user.email,
+      };
+    });
+}
+// Варіант з async/await (чистіший для читання):
+async function fetchUserData_(id) {
+  const res = await fetch(`https://jsonplaceholder.typicode.com/users/${id}`);
+  if (!res.ok) throw new Error(`User with id ${id} not found`);
+  const user = await res.json();
+  return { name: user.name, email: user.email };
+}
 // ================================================================================================
 // ================================================================================================
 //*-Week №9 (ChatGPT) (Saturday)
