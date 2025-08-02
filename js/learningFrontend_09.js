@@ -143,11 +143,24 @@ async function fetchUserData_(id) {
 }
 // ================================================================================================
 // ================================================================================================
-//*-Week №9 (ChatGPT) (Saturday)
+//*-Week №9 togglePasswordVisibility (ChatGPT) (Saturday)
 /*
-
+ поле введення пароля <input type="password" id="password"> та кнопка <button id="toggle">Show</button>.
+Напиши функцію togglePasswordVisibility(), яка при кліку на кнопку змінює тип поля між "password"
+і "text" та змінює текст кнопки відповідно на "Hide" або "Show".
  */
 // Мій варіант
+function togglePasswordVisibility() {
+  const passwordInput = document.getElementById('password');
+  const toggleButton = document.getElementById('toggle');
 
+  if (passwordInput.type === 'password') {
+    passwordInput.type = 'text';
+    toggleButton.textContent = 'Hide';
+  } else {
+    passwordInput.type = 'password';
+    toggleButton.textContent = 'Show';
+  }
+}
 // ================================================================================================
 // ================================================================================================
