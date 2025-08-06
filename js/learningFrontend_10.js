@@ -48,11 +48,33 @@ function mergeAndSortArrays_(arr1, arr2) {
 
 // ================================================================================================
 // ================================================================================================
-//*-Week №10 (ChatGPT) (Tuesday)
+//*-Week №10 decodeMessage (ChatGPT) (Tuesday)
 /*
-
+Напиши функцію decodeMessage(str), яка:
+Приймає рядок, у якому кожне друге слово зашифроване у зворотному порядку.
+Повертає розшифрований рядок.
+decodeMessage("Hello dlroW this si a tset")  
+// ➞ "Hello World this is a test"
  */
 // Мій варіант
+function decodeMessage(str) {
+  const array = str.split(' ').map((word, i) => {
+    if (i % 2 !== 0) {
+      return word.split('').reverse().join('');
+    } else {
+      return word;
+    }
+  });
+  return array.join(' ');
+}
+
+// Більш компактний варіант від GPT:
+function decodeMessage_(str) {
+  return str
+    .split(' ')
+    .map((word, i) => (i % 2 ? [...word].reverse().join('') : word))
+    .join(' ');
+}
 
 // ================================================================================================
 // ================================================================================================
