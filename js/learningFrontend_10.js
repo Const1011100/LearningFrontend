@@ -78,12 +78,69 @@ function decodeMessage_(str) {
 
 // ================================================================================================
 // ================================================================================================
-//*-Week №10 (ChatGPT) (Wednesday)
+//*-Week №10 Inventory (ChatGPT) (Wednesday)
 /*
-
+Створи клас Inventory, який:
+Має приватне поле з масивом товарів.
+Метод addItem(name, quantity), який додає товар (або збільшує його кількість, якщо він вже існує).
+Метод removeItem(name, quantity), який зменшує кількість або видаляє товар, якщо кількість стає 0.
+Метод getInventory(), який повертає копію списку товарів, відсортованих за алфавітом.
  */
 // Мій варіант
+class Inventory {
+  #items = {}; // Приватне поле для зберігання товарів
 
+  // Додати товар або збільшити його кількість
+  addItem(name, quantity) {
+    if (typeof quantity !== 'number' || quantity <= 0) {
+      throw new Error('Quantity must be a positive number');
+    }
+
+    if (this.#items[name]) {
+      this.#items[name] += quantity;
+    } else {
+      this.#items[name] = quantity;
+    }
+  }
+
+  // Видалити товар або зменшити його кількість
+  removeItem(name, quantity) {
+    if (typeof quantity !== 'number' || quantity <= 0) {
+      throw new Error('Quantity must be a positive number');
+    }
+
+    if (!this.#items[name]) {
+      throw new Error(`Item "${name}" not found in inventory`);
+    }
+
+    if (this.#items[name] < quantity) {
+      throw new Error(`Not enough quantity of "${name}" in inventory`);
+    }
+
+    this.#items[name] -= quantity;
+
+    if (this.#items[name] === 0) {
+      delete this.#items[name];
+    }
+  }
+
+  // Отримати копію інвентаря, відсортованого за алфавітом
+  getInventory() {
+    // Створюємо копію об'єкта
+    const copy = { ...this.#items };
+
+    // Сортуємо ключі за алфавітом
+    const sortedKeys = Object.keys(copy).sort((a, b) => a.localeCompare(b));
+
+    // Створюємо новий об'єкт з відсортованими ключами
+    const sortedInventory = {};
+    for (const key of sortedKeys) {
+      sortedInventory[key] = copy[key];
+    }
+
+    return sortedInventory;
+  }
+}
 // ================================================================================================
 // ================================================================================================
 //*-Week №10 (ChatGPT) (Thursday)
