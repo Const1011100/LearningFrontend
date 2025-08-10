@@ -179,11 +179,77 @@ function fetchUserData(userId) {
 }
 // ================================================================================================
 // ================================================================================================
-//*-Week №10 (ChatGPT) (Saturday)
+//*-Week №10 createTodoApp (ChatGPT) (Saturday)
 /*
-
+Створи функцію createTodoApp(), яка:
+Додає на сторінку поле вводу, кнопку та список завдань.
+При натисканні кнопки нове завдання додається до списку.
+Кожне завдання має кнопку "Видалити", яка прибирає його зі списку.
+Завдання зберігаються в localStorage та відновлюються при перезавантаженні сторінки.
  */
 // Мій варіант
+function createTodoApp() {
+  // --- Створюємо елементи ---
+  const input = document.createElement('input');
+  input.placeholder = 'Введіть завдання...';
 
+  const addButton = document.createElement('button');
+  addButton.textContent = 'Додати';
+
+  const list = document.createElement('ul');
+
+  document.body.append(input, addButton, list);
+
+  // --- Читаємо збережені завдання ---
+  let todos = JSON.parse(localStorage.getItem('todos')) || [];
+
+  // --- Функція збереження ---
+  function saveTodos() {
+    localStorage.setItem('todos', JSON.stringify(todos));
+  }
+
+  // --- Функція рендеру ---
+  function renderTodos() {
+    list.innerHTML = '';
+    todos.forEach((todo, index) => {
+      const li = document.createElement('li');
+      li.textContent = todo;
+
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = 'Видалити';
+      deleteBtn.className = 'delete-btn';
+
+      deleteBtn.addEventListener('click', () => {
+        todos.splice(index, 1);
+        saveTodos();
+        renderTodos();
+      });
+
+      li.appendChild(deleteBtn);
+      list.appendChild(li);
+    });
+  }
+
+  // --- Обробник кнопки додавання ---
+  addButton.addEventListener('click', () => {
+    const task = input.value.trim();
+    if (task) {
+      todos.push(task);
+      input.value = '';
+      saveTodos();
+      renderTodos();
+    }
+  });
+
+  // --- Додаємо можливість Enter для зручності ---
+  input.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      addButton.click();
+    }
+  });
+
+  // --- Рендеримо початковий список ---
+  renderTodos();
+}
 // ================================================================================================
 // ================================================================================================
